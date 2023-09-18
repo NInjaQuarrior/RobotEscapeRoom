@@ -1,0 +1,41 @@
+.box {
+    text-align: center;
+    width: 400px;
+    height: 50px;
+    border: 1px solid white;
+    background-color: white;
+    color: white;
+    position: absolute;
+    color: #54abc3;
+    text-align: center;
+    font-size: 40px;
+    /* font-family: "Optima"; */
+}
+
+#b1 {
+    top: calc(25% - 25px);
+    left: calc(25% - 200px);
+}
+
+#b2 {
+    top: calc(25% - 25px);
+    left: calc(75% - 200px);
+}
+
+#b3 {
+    top: calc(50% - 25px);
+    left: calc(50% - 200px);
+}
+
+#b4 {
+    top: calc(75% - 25px);
+    left: calc(25% - 200px);
+}
+
+#b5 {
+    top: calc(75% - 25px);
+    left: calc(75% - 200px);
+}
+
+/* Height: 713px 
+    Width: 1285px*/

@@ -1,0 +1,19 @@
+/* STYLE FOR ALL SLIDERS */
+.slidecontainer {
+    width: 80%;
+    height: 100px;
+}
+
+/* SLIDER CLASS */
+.slider {
+    position: relative;
+    width: 50%;
+    height: 100px;
+    left: 450px;
+    background: grey;
+}
+
+/* DESCRIPTION OF SLIDER */
+label {
+    color: white;
+}

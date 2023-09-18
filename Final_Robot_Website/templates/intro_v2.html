@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href='/static/login.css'>
+</head>
+
+<body>
+    <!-- ----------- HEADERS ----------- -->
+    <title> MQP - Robot Escape Room </title>
+    <h1> MQP - Robot Escape Room </h1>
+
+    <audio controls id="testSound">
+        <source src="/static/narrative_intro.wav" />
+    </audio>
+
+    <!-- ----------- Narrative Script ----------- -->
+    <p class="narrative">
+        Walrus: Hey guys, I’m picking up a lot more interference coming up here than the ship predicted…</br></br>
+        Shrimp: Are you sure? Rerun the numbers </br></br>
+        Walrus: Yeah I’m telling you these calculations don’t match what I’m seeing </br></br>
+        Shrimp: Hang on I’m coming down </br></br>
+        Books: Have y’all figured out those numbers? A bunch of high speed debris just popped up on the radar and we’re heading right toward it- </br></br>
+        Frenzy: WE’VE BEEN HIT, MOVE TO YOUR ST- </br></br>
+        Walrus & Shrimp: where did they-...- out of nowhere-... -need to access-...-send out- -should still work- </br></br>
+        Books: WE’VE ENTERED A FIELD, ENGAGING EVASIVE ACTION </br></br>
+        Bravo: we’re taking heavy damage, shields are failing on all sides and we lost the auxiliary processor on the top deck </br></br>
+        Books: I can’t get a status from Walrus and Shrimp does anyone have contact?? </br></br>
+        Bravo: Power is out in decks one…and 12, patching over to- </br></br>
+        Red Rover: I can’t get communications under the first floo-...-gnal tower’s hit, dispatching repair robo- </br></br>
+        Books: … -hit! Rover?? Are you there? Can anyone hear? Op Con, you’re close I need you to.. -onnect into the dispatched bot and fix the signal tower before we-...-or we can’t dock to get out of this… -ield- </br></br>
+    </p>
+
+    <div id="padding" align="center">
+        <button onclick=window.location="{{ url_for('login') }}">Log In</button>
+    </div>
+
+</body>
+
+</html>

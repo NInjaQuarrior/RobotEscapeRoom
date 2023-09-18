@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href='/static/login.css'>
+    <!-- <meta http-equiv="refresh" content="3; url = login.html" /> -->
+</head>
+
+<body>
+    <!-- ----------- HEADERS ----------- -->
+    <title> MQP - Robot Escape Room </title>
+    <h1> MQP - Robot Escape Room </h1>
+
+    <audio autoplay>
+        <source src="/static/narrative_intro.wav" />
+    </audio>
+
+    <!-- ----------- Narrative Script ----------- -->
+    <p class="narrative">
+        <span id="line1" style="visibility:hidden">
+            Walrus: Hey guys, I’m picking up a lot more interference coming up here than the ship predicted…</br></br>
+        </span>
+        <span id="line2" style="visibility:hidden">
+            Shrimp: Are you sure? Rerun the numbers</br></br>
+        </span>
+        <span id="line3" style="visibility:hidden">
+            Walrus: Yeah I’m telling you these calculations don’t match what I’m seeing</br></br>
+        </span>
+        <span id="line4" style="visibility:hidden">
+            Shrimp: Hang on I’m coming down</br></br>
+        </span>
+        <span id="line5" style="visibility:hidden">
+            Books: Have y’all figured out those numbers? A bunch of high speed debris just popped up on the radar and we’re heading right toward it-</br></br>
+        </span>
+        <span id="line6" style="visibility:hidden">
+            Frenzy: WE’VE BEEN HIT, MOVE TO YOUR ST-</br></br>
+        </span>
+        <span id="line7" style="visibility:hidden">
+            Walrus & Shrimp: where did they-...- out of nowhere-... -need to access-...-send out- -should still work-</br></br>
+        </span>
+        <span id="line8" style="visibility:hidden">
+            Books: WE’VE ENTERED A FIELD, ENGAGING EVASIVE ACTION</br></br>
+        </span>
+        <span id="line9" style="visibility:hidden">
+            Bravo: we’re taking heavy damage, shields are failing on all sides and we lost the auxiliary processor on the top deck</br></br>
+        </span>
+        <span id="line10" style="visibility:hidden">
+            Books: I can’t get a status from Walrus and Shrimp does anyone have contact??</br></br>
+        </span>
+        <span id="line11" style="visibility:hidden">
+            Bravo: Power is out in decks one…and 12, patching over to-</br></br>
+        </span>
+        <span id="line12" style="visibility:hidden">
+            Red Rover: I can’t get communications under the first floo-...-gnal tower’s hit, dispatching repair robo-</br></br>
+        </span>
+        <span id="line13" style="visibility:hidden">
+            Books: … -hit! Rover?? Are you there? Can anyone hear? Op Con, you’re close I need you to.. -onnect into the dispatched bot and fix the signal tower before we-...-or we can’t dock to get out of this… -ield-</br></br>
+        </span>
+    </p>
+
+    <!-- ----------- FUNCTIONS ----------- -->
+    <script type="text/javascript">
+        // plays the narrative line by line 
+        window.onload = function () {
+            showText("line1", 1);
+            showText("line2", 8);
+            showText("line3", 12);
+            showText("line4", 17);
+            showText("line5", 22);
+            showText("line6", 31);
+            showText("line7", 33);
+            showText("line8", 45);
+            showText("line9", 48);
+            showText("line10", 54);
+            showText("line11", 58);
+            showText("line12", 65);
+            showText("line13", 75);
+            redirect(110);
+        }
+        function showText(id, delay) {
+            // delay in seconds 
+            var line = document.getElementById(id);
+            setTimeout(function () { line.style.visibility = "visible"; }, delay * 1000);
+        }
+        function redirect(delay) {
+            setTimeout(function () { window.location.assign("{{ url_for('login') }}"); }, delay * 1000);
+        }
+    </script>
+
+</body>
+
+</html>

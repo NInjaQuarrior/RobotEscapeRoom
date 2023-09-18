@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href='/static/login.css'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"> </script>
+    <script src="/static/mqtt.js" type="text/javascript"></script>
+</head>
+
+<body onload=setup()>
+
+    <!------------ HEADERS ------------->
+    <title> MQP - Robot Escape Room </title>
+    <h1> MQP - Robot Escape Room </h1>
+    <h2 class="center"> Welcome to our escape room experience! <br><br> Note that all events are fictional and any <br>
+        resemblance to real life events or people is entirely coincidental. <br> If at any point you would like your
+        experience to come to an end, <br> please press the ESC button and wait for your escape room operator. </h2>
+
+    <!------------- BUTTONS ------------->
+    <div align="center">
+        <button id="agree" onClick=window.location="{{ url_for('intro') }}">I AGREE</button>
+        <button id="disagree" onClick=window.location="{{ url_for('end_page') }}">I DISAGREE</button>
+    </div>
+
+
+    <script>
+        function setup() {
+            hide();
+            startConnect();
+            // publishMessage("robot/function", "disable move");
+            text2speech();
+            setTimeout(function () { show(); }, 19000)
+        }
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        function hide() {
+            document.getElementById("agree").style.visibility = "hidden";
+            document.getElementById("disagree").style.visibility = "hidden";
+        }
+
+        function show() {
+            document.getElementById("agree").style.visibility = "visible";
+            document.getElementById("disagree").style.visibility = "visible";
+        }
+
+        function text2speech() {
+            var msg = new SpeechSynthesisUtterance();
+            msg.text = "Welcome to our escape room experience! Please note that all events are fictional and any resemblance to real life events or people is entirely coincidental. If at any point you would like your experience to come to an end, please press the escape button and wait for your escape room operator";
+            window.speechSynthesis.speak(msg);
+        }
+
+        // Creating a new client instance 
+        clientID = "website_disclaimer";
+        host = "mqtt.eclipseprojects.io";
+        port = 80;
+        client = new Paho.MQTT.Client(host, Number(port), clientID);
+
+        function startConnect() {
+            client.onMessageArrived = onMessageArrived;
+            client.connect({
+                onSuccess: onConnect
+            });
+        }
+
+        function onConnect() {
+            client.subscribe("robot/test");
+            client.subscribe("robot/aruco");
+            client.subscribe("robot/puzzle");
+            client.subscribe("robot/function");
+            client.subscribe("room/puzzle");
+            console.log("successfully connected to topics.");
+        }
+
+        function onMessageArrived(msg) {
+            console.log("OnMessageArrived: " + msg.payloadString + "\tfrom Topic: " + msg.destinationName);
+        }
+
+        function publishMessage(topic, msg) {
+            Message = new Paho.MQTT.Message(msg);
+            Message.destinationName = topic;
+
+            client.send(Message);
+            console.log("topic: " + topic + "\tmsg: " + msg);
+        }
+
+    </script>
+
+</body>
+
+</html>

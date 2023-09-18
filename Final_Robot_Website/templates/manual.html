@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href='/static/sidebar.css'>
+    <link rel="stylesheet" href='/static/manual.css'>
+</head>
+
+<body>
+    <!-- ----------- HEADERS ----------- -->
+    <title> MQP - Robot Escape Room </title>
+    <h1> Robot Manual </h1>
+
+    <!-- ----------- BUTTONS ----------- -->
+    <div>
+        <button class="sidebarButton" type="button" id="homeButton" onclick=window.location="{{ url_for('main') }}">
+            <img src="static/Images/Home.png"></button>
+
+        <!-- <button class="sidebarButton" type="button" id="progressButton"
+            onclick=window.location="{{ url_for('progress') }}">
+            <img src="static/Images/Progress.png"></button> -->
+
+        <button class="sidebarButton" type="button" id="lockButton" onclick=window.location="{{ url_for('hint') }}">
+            <img src="static/Images/Hint.png"></button>
+
+        <!-- <button class="sidebarButton" type="button" id="settingsButton"
+            onclick=window.location="{{ url_for('settings') }}">
+            <img src="static/Images/Settings.png"></button> -->
+
+        <button class="sidebarButton" type="button" id="infoButton" onclick=window.location="{{ url_for('manual') }}">
+            <img src="static/Images/Info.png"></button>
+    </div>
+    <!-- ----------- DESCRIPTION OF TOOLS ----------- -->
+
+    <div id="box">
+        <img class="control" src="static/Images/robot_control.png">
+        <img class="control" src="static/Images/camera_control.png">
+        <img class="control" src="static/Images/robot_function.png">
+    </div>
+
+    <p>
+        <!-- Drive: Controls the robot's movement. <br>
+        Gripper: Controls the movement of the robot's arm. <br> -->
+        Hint: Provides a hint should you want one. <br>
+        Light: Shines a light. <br>
+        <!-- Magnet: Turns the magnet on/off. <br> -->
+        Black light: Shines a UV light that may reveal hidden messages written on the wall. <br>
+        Self Destruct: TBD. <br>
+        Camera up/Camera down: Controls the vertical movement of the camera. <br>
+    </p>
+
+</body>
+
+</html>

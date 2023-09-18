@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="import" href="{{ url_for('main') }}">
+    <link rel="stylesheet" href='/static/buttonHint.css'>
+    <link rel="stylesheet" href='/static/sidebar.css'>
+    <link rel="import" href="{{ url_for('hint') }}">
+</head>
+
+<body>
+    <!-- ----------- HEADERS ----------- -->
+    <title> MQP - Robot Escape Room </title>
+    <h1> Hints </h1>
+
+    <!-- ----------- BUTTONS ----------- -->
+    <button class="sidebarButton" type="button" id="homeButton" onclick=window.location="{{ url_for('main') }}"> <img
+        src="static/Images/Home.png"></button>
+
+<!-- <button class="sidebarButton" type="button" id="progressButton" onclick=window.location="{{ url_for('progress') }}"> <img
+        src="static/Images/Progress.png"></button> -->
+
+<button class="sidebarButton" type="button" id="lockButton" onclick=window.location="{{ url_for('hint') }}"> <img
+        src="static/Images/Hint.png"></button>
+
+<!-- <button class="sidebarButton" type="button" id="settingsButton" onclick=window.location="{{ url_for('settings') }}"> <img
+        src="static/Images/Settings.png"></button> -->
+
+<button class="sidebarButton" type="button" id="infoButton" onclick=window.location="{{ url_for('manual') }}"> <img
+        src="static/Images/Info.png"></button>
+
+    <!-- ----------- HINT BOXES ----------- -->
+    <div class="box" id="b1"> Calibration </div>
+    <div class="box" id="b2"> Door </div>
+    <div class="box" id="b3"> Lights </div>
+    <div class="box" id="b4"> Replacement Parts </div>
+    <div class="box" id="b5"> Signal Tower Repair </div>
+
+    <button class="hintButton" id="calibration1" onclick="giveHint('calibration1', 'Hint1')"> 1 </button>
+    <button class="hintButton" id="calibration2" onclick="giveHint('calibration2', 'Hint2')"> 2 </button>
+    <button class="hintButton" id="calibration3" onclick="giveHint('calibration3', 'Hint3')"> 3 </button>
+    <button class="hintButton" id="calibration4" onclick="giveHint('calibration4', 'Hint4')"> 4 </button>
+    <button class="hintButton" id="calibration5" onclick="giveHint('calibration5', 'Hint5')"> 5 </button>
+    <button class="hintButton" id="door1" onclick="giveHint('door1', 'Hint6')"> 1 </button>
+    <button class="hintButton" id="door2" onclick="giveHint('door2', 'Hint7')"> 2 </button>
+    <button class="hintButton" id="door3" onclick="giveHint('door3', 'Hint8')"> 3 </button>
+    <button class="hintButton" id="door4" onclick="giveHint('door4', 'Hint9')"> 4 </button>
+    <button class="hintButton" id="door5" onclick="giveHint('door5', 'Hint10')"> 5 </button>
+    <button class="hintButton" id="lights1" onclick="giveHint('lights1', 'Hint11')"> 1 </button>
+    <button class="hintButton" id="lights2" onclick="giveHint('lights2', 'Hint12')"> 2 </button>
+    <button class="hintButton" id="lights3" onclick="giveHint('lights3', 'Hint13')"> 3 </button>
+    <button class="hintButton" id="lights4" onclick="giveHint('lights4', 'Hint14')"> 4 </button>
+    <button class="hintButton" id="lights5" onclick="giveHint('lights5', 'Hint15')"> 5 </button>
+    <button class="hintButton" id="lights6" onclick="giveHint('lights6', 'Hint16')"> 6 </button>
+    <button class="hintButton" id="replacementParts1" onclick="giveHint('replacementParts1', 'Hint17')"> 1 </button>
+    <button class="hintButton" id="replacementParts2" onclick="giveHint('replacementParts2', 'Hint18')"> 2 </button>
+    <button class="hintButton" id="replacementParts3" onclick="giveHint('replacementParts3', 'Hint19')"> 3 </button>
+    <button class="hintButton" id="replacementParts4" onclick="giveHint('replacementParts4', 'Hint20')"> 4 </button>
+    <button class="hintButton" id="replacementParts5" onclick="giveHint('replacementParts5', 'Hint21')"> 5 </button>
+    <button class="hintButton" id="replacementParts6" onclick="giveHint('replacementParts6', 'Hint22')"> 6 </button>
+    <button class="hintButton" id="tower1" onclick="giveHint('tower1', 'Hint23')"> 1 </button>
+    <button class="hintButton" id="tower2" onclick="giveHint('tower2', 'Hint24')"> 2 </button>
+    <button class="hintButton" id="tower3" onclick="giveHint('tower3', 'Hint25')"> 3 </button>
+    <button class="hintButton" id="tower4" onclick="giveHint('tower4', 'Hint26')"> 4 </button>
+    <button class="hintButton" id="tower5" onclick="giveHint('tower5', 'Hint27')"> 5 </button>
+
+
+    <script>
+        // PRINTS HINT FOR REQUEST 
+        function giveHint(id, hint_num) {
+            if (localStorage.getItem(hint_num) == "Unlocked") {
+                alert(localStorage.getItem(id));
+            } else {
+                alert(id + " is Locked");
+            }
+        }
+    </script>
+
+</body>
+
+</html>

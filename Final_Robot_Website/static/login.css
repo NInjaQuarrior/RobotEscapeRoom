@@ -1,0 +1,54 @@
+/* COLOR SCHEME */
+body {
+    background-color: #131231;
+}
+
+/* TEXT STYLES */
+h1 {
+    text-align: center;
+    display: block;
+    color: white;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+h2 {
+    text-align: center;
+    display: block;
+    color: white;
+    margin-left: 100px;
+    margin-right: 100px;
+}
+
+.narrative {
+    padding-left: 10%;
+    padding-right: 10%;
+    text-align: left;
+    display: block;
+    font-size: 20px;
+    color: white;
+}
+
+#text_file {
+    text-align: center;
+    display: block;
+    font-size: 20px;
+    color: white;
+}
+
+/* BUTTONS */
+button {
+    position: relative;
+    text-align: center;
+    font-size: 18px;
+    padding-top: 5px; 
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 10px;
+}
+
+#testSound {
+    position: absolute;
+    margin-left: 75%;
+}

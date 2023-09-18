@@ -1,0 +1,25 @@
+/* STYLE FOR PUZZLE
+p {
+    position: absolute;
+    left: 300px;
+    top: 200px;
+    font-size: 25px;
+}*/
+
+/* Centered Image Code */
+
+.container {
+    height: 0;
+    padding-bottom: 50%;
+    position: relative;
+    border: 0px solid #dbe4ed; /* Border color is optional */
+}
+
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
