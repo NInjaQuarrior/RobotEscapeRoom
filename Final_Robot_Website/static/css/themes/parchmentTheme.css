@@ -1,0 +1,10 @@
+:root{
+    --bgColor: none;
+    --fontColor: black;
+    --lowContrast: grey;
+    --imageBrightness: dark;
+}
+
+body{
+    background-image: url("parchmentBackground.png");
+}

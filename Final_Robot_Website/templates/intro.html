@@ -2,7 +2,8 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href='/static/login.css'>
+    <link rel="stylesheet" href='/static/css/login.css'>
+    <script src="/static/js/generic.js" type="text/javascript"></script>
     <!-- <meta http-equiv="refresh" content="3; url = login.html" /> -->
 </head>
 
@@ -62,8 +63,9 @@
 
     <!-- ----------- FUNCTIONS ----------- -->
     <script type="text/javascript">
+        window.onload = function(){showDialouge()}
         // plays the narrative line by line 
-        window.onload = function () {
+        function showDialouge() {
             showText("line1", 1);
             showText("line2", 8);
             showText("line3", 12);

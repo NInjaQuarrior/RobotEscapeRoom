@@ -1,16 +1,11 @@
 body {
-    background-color: #131231;
-    color: white;
+    background-color: var(--bgColor);
+    color: var(--fontColor);
     width: 10%;
 }
 
 h1 {
-    color: white;
     text-align: center;
-}
-
-p {
-    color: white;
 }
 
 /* STYLE FOR TAGS */
@@ -20,7 +15,6 @@ img {
 }
 
 form {
-    color: white;
     text-align: center;
 }
 

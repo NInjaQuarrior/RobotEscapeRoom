@@ -1,14 +1,10 @@
 body {
-    background-color: #131231;
+    background-color: var(--bgColor);
+    color: var(--fontColor);
 }
 
 h1 {
-    color: white;
     text-align: center;
-}
-
-p {
-    color: white;
 }
 
 /* SIDEBAR STYLE */
@@ -17,7 +13,7 @@ p {
     position: absolute;
     left: calc(100% - 60px);
     top: 150px;
-    background-color: black;
+    background-color: var(--lowContrast);
 }
 
 /* ICON STYLE */

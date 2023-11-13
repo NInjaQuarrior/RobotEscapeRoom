@@ -2,8 +2,10 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href='/static/sidebar.css'>
-    <link rel="stylesheet" href='/static/manual.css'>
+    <link rel="stylesheet" href='/static/css/sidebar.css'>
+    <script src="/static/js/sidebar.js" type="text/javascript"></script>
+    <link rel="stylesheet" href='/static/css/manual.css'>
+    <script src="/static/js/generic.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -11,25 +13,6 @@
     <title> MQP - Robot Escape Room </title>
     <h1> Robot Manual </h1>
 
-    <!-- ----------- BUTTONS ----------- -->
-    <div>
-        <button class="sidebarButton" type="button" id="homeButton" onclick=window.location="{{ url_for('main') }}">
-            <img src="static/Images/Home.png"></button>
-
-        <!-- <button class="sidebarButton" type="button" id="progressButton"
-            onclick=window.location="{{ url_for('progress') }}">
-            <img src="static/Images/Progress.png"></button> -->
-
-        <button class="sidebarButton" type="button" id="lockButton" onclick=window.location="{{ url_for('hint') }}">
-            <img src="static/Images/Hint.png"></button>
-
-        <!-- <button class="sidebarButton" type="button" id="settingsButton"
-            onclick=window.location="{{ url_for('settings') }}">
-            <img src="static/Images/Settings.png"></button> -->
-
-        <button class="sidebarButton" type="button" id="infoButton" onclick=window.location="{{ url_for('manual') }}">
-            <img src="static/Images/Info.png"></button>
-    </div>
     <!-- ----------- DESCRIPTION OF TOOLS ----------- -->
 
     <div id="box">
@@ -45,7 +28,6 @@
         Light: Shines a light. <br>
         <!-- Magnet: Turns the magnet on/off. <br> -->
         Black light: Shines a UV light that may reveal hidden messages written on the wall. <br>
-        Self Destruct: TBD. <br>
         Camera up/Camera down: Controls the vertical movement of the camera. <br>
     </p>
 

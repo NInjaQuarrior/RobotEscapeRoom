@@ -2,8 +2,10 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href='/static/sidebar.css'>
-    <link rel="stylesheet" href='/static/settings.css'>
+    <link rel="stylesheet" href='/static/css/sidebar.css'>
+    <script src="/static/js/sidebar.js" type="text/javascript"></script>
+    <link rel="stylesheet" href='/static/css/settings.css'>
+    <script src="/static/js/generic.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -12,40 +14,34 @@
     <title> MQP - Robot Escape Room </title>
     <h1> Settings </h1>
 
-    <!-- ----------- BUTTONS ----------- -->
-    <button class="sidebarButton" type="button" id="homeButton" onclick=window.location="{{ url_for('main') }}"> <img
-        src="static/Images/Home.png"></button>
-
-<button class="sidebarButton" type="button" id="progressButton" onclick=window.location="{{ url_for('progress') }}"> <img
-        src="static/Images/Progress.png"></button>
-
-<button class="sidebarButton" type="button" id="lockButton" onclick=window.location="{{ url_for('hint') }}"> <img
-        src="static/Images/Hint.png"></button>
-
-<button class="sidebarButton" type="button" id="settingsButton" onclick=window.location="{{ url_for('settings') }}"> <img
-        src="static/Images/Settings.png"></button>
-
-<button class="sidebarButton" type="button" id="infoButton" onclick=window.location="{{ url_for('manual') }}"> <img
-        src="static/Images/Info.png"></button>
-
 
     <!-- ----------- *** NOT SURE WHAT THIS IS *** ----------- -->
-    <label class="switch">
+    <!-- <label class="switch">
         <input class="switch-input" type="checkbox" />
         <span class="switch-label" data-on="On" data-off="Off"></span>
         <span class="switch-handle"></span>
-    </label>
+    </label> -->
 
     <!-- ----------- CONTAINS ALL SLIDERS ----------- -->
     <div class="slidecontainer">
-        <input type="range" min="1" max="100" value="50" class="slider" id="volume">
-        <label for="volume">Volume</label>
-        <input type="range" min="1" max="100" value="50" class="slider" id="difficulty">
-        <label for="volume">Difficulty</label>
-        <input type="range" min="1" max="100" value="50" class="slider" id="diaglogueVolume">
-        <label for="volume">Dialogue Volume</label>
+        <h1> Audio Controls: </h1>
+        <input type="range" min="1" max="100" value="50" class="slider" id="volume"><br>
+        <label for="volume">Volume</label><br>
+        <input type="range" min="1" max="100" value="50" class="slider" id="difficulty"><br>
+        <label for="difficulty">Difficulty</label><br>
+        <!-- difficulty??? -->
+        <input type="range" min="1" max="100" value="50" class="slider" id="diaglogueVolume"><br>
+        <label for="diaglogueVolume">Dialogue Volume</label>
     </div>
 
+    <div id="themeSelect">
+        <h1> Select a theme: </h1>
+        <div id="themeButtons">
+            <button onclick="changeTheme('light')"> Light Theme </button>
+            <button onclick="changeTheme('dark')"> Dark Theme </button>
+            <button onclick="changeTheme('parchment')"> Parchment Theme </button>
+        </div>
+    </div>
 </body>
 
 </html>

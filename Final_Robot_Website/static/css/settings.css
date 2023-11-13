@@ -1,0 +1,32 @@
+/* STYLE FOR ALL SLIDERS */
+.slidecontainer {
+    position: absolute;
+    width: 40%;
+    height: 100px;
+    left: 55%;
+}
+
+/* SLIDER CLASS */
+.slider {
+    position: relative;
+    width: 80%;
+    height: 50px;
+    left: 10%;
+    background: grey;
+}
+
+#themeSelect{
+    position: absolute;
+    width: 40%;
+    left: 5%;
+}
+#themeButtons{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+/* DESCRIPTION OF SLIDER */
+label {
+    color: var(--fontColor);
+}
