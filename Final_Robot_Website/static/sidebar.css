@@ -15,7 +15,7 @@ p {
 .sidebarButton {
     display: block;
     position: absolute;
-    left: calc(100% - 60px);
+    left: calc(100% - 80px);
     top: 150px;
     background-color: black;
 }

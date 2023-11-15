@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href='/static/login.css'>
+    <link rel="stylesheet" href='/static/doorCode.css'>
+    <script>
+        function checkCode(){
+            const input = document.getElementById("entryText");
+            if(input.value==="space"){
+                //Send out door open trigger
+                //go to main
+                window.location = "{{ url_for('main') }}";
+            }else{
+                //tell player it's wrong
+                alert("Code not accepted");
+                //reset
+                input.value = "";
+            }
+        }
+    </script>
+</head>
+<body>
+    <title> MQP - Robot Escape Room </title>
+    <div id="entry">
+        <!--
+            Input code:
+            text field
+            enter   leave
+        -->
+        <h1> Input Code: </h1>
+        <input type="text" id="entryText"><br>
+        <button id="submit" onclick = "checkCode()"> Enter </button>
+        <button id="leave" onclick=window.location="{{ url_for('main') }}"> Leave </button>
+    </div>
+
+</body>
+</html>

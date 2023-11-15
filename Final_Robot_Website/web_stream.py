@@ -225,6 +225,10 @@ def win():
 @app.route('/manualv2')
 def manualv2():
     return render_template('manualv2.html')
+
+@app.route('/doorCode')
+def doorCode():
+    return render_template('doorCode.html')
 # --- Flask templates Ends ---
 
 
