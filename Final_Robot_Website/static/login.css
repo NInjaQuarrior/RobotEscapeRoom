@@ -52,3 +52,9 @@ button {
     position: absolute;
     margin-left: 75%;
 }
+
+#skip{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}

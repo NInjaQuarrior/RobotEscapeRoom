@@ -6,7 +6,7 @@
     <!-- <meta http-equiv="refresh" content="3; url = login.html" /> -->
 </head>
 
-<body>
+<body ondblclick="showText('skip', 0)">
     <!-- ----------- HEADERS ----------- -->
     <title> MQP - Robot Escape Room </title>
     <h1> MQP - Robot Escape Room </h1>
@@ -14,6 +14,8 @@
     <audio autoplay>
         <source src="/static/narrative_intro.wav" />
     </audio>
+
+    <button id="skip" style="visibility: hidden;" onclick="redirect(0)">Skip</button></br>
 
     <!-- ----------- Narrative Script ----------- -->
     <p class="narrative">
