@@ -158,8 +158,8 @@ def video_feed():
 
 
 @app.route('/')
-def dumbdumb():
-    return render_template('dumbdumb.html')
+def start():
+    return render_template('start.html')
 
 
 @app.route('/disclaimer')
