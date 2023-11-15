@@ -32,24 +32,34 @@
     <!-- <button class="sidebarButton" type="button" id="settingsButton" onclick=window.location="{{ url_for('settings') }}">
         <img src="static/Images/Settings.png"></button> -->
 
-    <button class="sidebarButton" type="button" id="infoButton" onclick=window.location="{{ url_for('manual') }}"> <img
-            src="static/Images/Info.png"></button>
+    <!-- <button class="sidebarButton" type="button" id="infoButton" onclick=window.location="{{ url_for('manual') }}"> <img
+            src="static/Images/Info.png"></button> -->
 
     <button id="hintButton" onClick=printHint()> Hint </button>
 
     <!-- <img src="static/Images/Background.svg" class = "Background" id = "Background">  -->
 
-    <!-- ROBOT FUNCTIONALITY -->
-    <input id="camera_detect" type="checkbox" onclick="return false;"></input>
-    <!-- <div id = "camera_checkmark"> &#x2713 </div> --> 
-    <div id="camera_detect" style="margin-left: 25px;">Scan Code</div>
-    <input id="light" type="checkbox" onclick="return false;"></input>
-    <div id="light" style="margin-left: 25px;"> Light</div>
-    <input id="blacklight" type="checkbox" onclick="return false;"></input>
-    <div id="blacklight" style="margin-left: 25px;">Blacklight</div>
+    <!-- ROBOT FUNCTIONALITY UI -->
+    <div id="camera">
+        <div class="buttonUI" id="cameraUp">W</div>
+        Up
+        <h3>Camera</h3>
+        Down
+        <div class="buttonUI" id="cameraDown">S</div>
+    </div>
+    <div id="peripherals">
+        <div class="buttonUI" id="light">1</div> <p>&emsp; Light</p>
+        <div class="buttonUI" id="blackLight">2</div> <p>&emsp; Black Light</p>
+        <div class="buttonUI" id="qrScan">3</div> <p>&emsp; Scan QR Code</p>
+    </div>
+    <div id="movement">
+        <p>Movement </p>
+        <div class="blank"></div> <div class="buttonUI" id="up"> &#8679; </div> <div class="blank"></div>
+        <div class="buttonUI" id="left"> &#8678; </div> <div class="buttonUI" id="down"> &#8681; </div> <div class="buttonUI" id="right"> &#8680; </div>
+    </div>
 
-    <!-- HINT BOX AND INPUT -->
-    <img id="fish" class="fishMain" src="static/Images/Robot.png"> </img>
+    <!-- HINT BOX AND INPUT
+    <img id="fish" class="fishMain" src="static/Images/Robot.png"> </img>-->
     <div id="hint_input" class="fishMain"> </div>
 
     <!-- PUZZLE 3 SYMBOLS AND SUBMIT BUTTON -->

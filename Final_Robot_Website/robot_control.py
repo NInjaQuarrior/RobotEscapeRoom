@@ -5,6 +5,12 @@
         this files takes in the keyboard control from local host 
 """
 
+lightButton = "1"
+blacklightButton = "2"
+qrscanButton = "3"
+cameraUp = "w"
+cameraDown = "s"
+
 # import built-in libraries
 import keyboard
 import RPi.GPIO as GPIO
@@ -61,11 +67,11 @@ def mqtt_setup() -> mqtt:
 def move_servo():  # FUNCION to move servo (for camera) up and down
     global servo, duty
     duty_stepper = 0.25
-    if (keyboard.is_pressed("w")):      # move servo up
+    if (keyboard.is_pressed(cameraUp)):      # move servo up
         duty = rmov.servo_contraint(duty+duty_stepper)
         servo.ChangeDutyCycle(duty)
         # sleep(0.2)
-    elif (keyboard.is_pressed("s")):    # move servo down
+    elif (keyboard.is_pressed(cameraDown)):    # move servo down
         duty = rmov.servo_contraint(duty-duty_stepper)
         servo.ChangeDutyCycle(duty)
         # sleep(0.2)
@@ -98,30 +104,30 @@ def move_arm():
 
 def robot_func():
     global enable_scan, enable_light, enable_blacklight
-    if (keyboard.is_pressed("q") and not enable_scan):          # enable scanning
+    if (keyboard.is_pressed(qrscanButton) and not enable_scan):          # enable scanning
         client.publish("robot/function", payload="enable scan")
         enable_scan = True
         sleep(0.2)
-    elif (keyboard.is_pressed("q") and enable_scan):            # disable scanning
+    elif (keyboard.is_pressed(qrscanButton) and enable_scan):            # disable scanning
         client.publish("robot/function", payload="disable scan")
         enable_scan = False
         sleep(0.2)
-    elif (keyboard.is_pressed("l") and not enable_light):       # enable light
+    elif (keyboard.is_pressed(lightButton) and not enable_light):       # enable light
         client.publish("robot/function", payload="enable light")
         rmov.led_on()
         enable_light = True
         sleep(0.2)
-    elif (keyboard.is_pressed("l") and enable_light):           # disable light
+    elif (keyboard.is_pressed(lightButton) and enable_light):           # disable light
         client.publish("robot/function", payload="disable light")
         enable_light = False
         rmov.led_off()
         sleep(0.2)
-    elif (keyboard.is_pressed("b") and not enable_blacklight):  # enable blacklight
+    elif (keyboard.is_pressed(blacklightButton) and not enable_blacklight):  # enable blacklight
         client.publish("robot/function", payload="enable blacklight")
         enable_blacklight = True
         rmov.blacklight_on()
         sleep(0.2)
-    elif (keyboard.is_pressed("b") and enable_blacklight):      # disable blacklight
+    elif (keyboard.is_pressed(blacklightButton) and enable_blacklight):      # disable blacklight
         client.publish("robot/function", payload="disable blacklight")
         enable_blacklight = False
         rmov.blacklight_off()
