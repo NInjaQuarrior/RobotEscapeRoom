@@ -37,6 +37,16 @@ def publish(client, topic):
         msg_count += 1
         sleep(10)
 
+def publishMessage(client, topic, message):
+    # msg = f"message: \"{msg_count}\""
+    result = client.publish(topic, payload=message.encode('utf-8'))
+    result.wait_for_publish()
+    status = result[0]
+    if status == 0:
+        print(f"{message} sent to topic {topic}")
+    else:
+        print(f"Failed to send message with status {status}")
+
 
 def mqtt_pub():
     client = connect_mqtt()

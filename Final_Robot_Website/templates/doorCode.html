@@ -8,6 +8,7 @@
             const input = document.getElementById("entryText");
             if(input.value==="space"){
                 //Send out door open trigger
+                publishMessage(mqtt.eclipseprojects.io, 'escape/room/passcode', 'space')
                 //go to main
                 window.location = "{{ url_for('main') }}";
             }else{
