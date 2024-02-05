@@ -20,6 +20,9 @@ app = Flask(__name__)
 camera = cv2.VideoCapture(0)
 scan_enabled = False
 
+#import puzzle script (from upload file later on?)
+from puzzleProgression import testMQTT
+
 
 # --- MQTT Setup ---
 
@@ -230,4 +233,5 @@ def manualv2():
 
 if __name__ == "__main__":
     mqtt_setup()
+    testMQTT(client)
     app.run(host='0.0.0.0', port=8000, debug=False)
