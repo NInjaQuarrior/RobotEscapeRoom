@@ -4,7 +4,7 @@ class Response(object):
     completed = False
     topic = ""      #string
     trigger = []    #list of strings
-    responses = []   # [string, list/string (see responseChoice)]
+    responses = []   # [string type, list(string)/string values (see responseChoice)]
 
     def __init__(self, topic, trigger, responses):
         self.topic = topic
@@ -86,6 +86,7 @@ def testMQTT(client):
 
 # "simultaneous" responses (same completion conditions) go in order as listed here
 puzzleList = []
+# template: makeResponse("", [""], [["", ]])
 
 def processSubscriptions(client, userdata, msg):
     print("recieved message | topic: "+msg.topic +
