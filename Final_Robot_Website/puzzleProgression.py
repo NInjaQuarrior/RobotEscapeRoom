@@ -85,7 +85,8 @@ def testMQTT(client):
     print('published')
 
 # "simultaneous" responses (same completion conditions) go in order as listed here
-puzzleList = []
+puzzleList = [makeResponse("Open Panel 1", ["run"], [["publish", ["room/setup/Motor1", "1,0"]], ["log", "sent 1,0 to motor 1"]]),
+              makeResponse("room/switch1", ["True"], [["log", "recieved true"]])]
 # template: makeResponse("", [""], [["", ]])
 
 def processSubscriptions(client, userdata, msg):
@@ -108,3 +109,4 @@ def runMQTT(client):
         sub = Client.subscribe(topic)
         if(sub[1]==128):
             print('Failed to subscribe to topics')
+    Client.publish("Open Panel 1", payload = "run")

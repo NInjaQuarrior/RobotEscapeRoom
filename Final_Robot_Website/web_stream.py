@@ -21,12 +21,12 @@ camera = cv2.VideoCapture(0)
 scan_enabled = False
 
 #import puzzle script (from upload file later on?)
-from puzzleProgression import testMQTT
+from puzzleProgression import testMQTT, runMQTT
 
 
 # --- MQTT Setup ---
 
-pi_ip_address = 'mqtt.eclipseprojects.io'
+pi_ip_address = '192.168.1.2'
 client = mqtt.Client(client_id="web_stream", clean_session=True)
 
 
@@ -48,7 +48,7 @@ def on_message(client, userdata, msg):
 def mqtt_setup() -> mqtt:
     client.connect(pi_ip_address)
     client.on_message = on_message
-    client.subscribe("robot/function")
+    client.subscribe("robot/  function")
     # client.subscribe("robot/puzzle")
     client.loop_start()
 
@@ -233,5 +233,6 @@ def manualv2():
 
 if __name__ == "__main__":
     mqtt_setup()
-    testMQTT(client)
+    #testMQTT(client)
+    runMQTT(client)
     app.run(host='0.0.0.0', port=8000, debug=False)
