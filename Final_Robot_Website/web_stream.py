@@ -160,11 +160,12 @@ def video_feed():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
 
+@app.route('/loadScript')
+def loadScript():
+    return render_template("loadScript.html")
+
+
 @app.route('/')
-def dumbdumb():
-    return render_template('dumbdumb.html')
-
-
 @app.route('/disclaimer')
 def disclaimer():
     return render_template('disclaimer.html')
@@ -175,64 +176,19 @@ def end_page():
     return render_template('endPage.html')
 
 
-@app.route('/hint')
-def hint():
-    return render_template('hint.html')
-
-
-@app.route('/index')
-def index():
-    return render_template('index.html')
-
-
-@app.route('/intro')
-def intro():
-    return render_template('intro.html')
-
-
-@app.route('/intro_redirect')
-def intro_redirect():
-    return render_template('intro_v2.html')
-
-
-@app.route('/login')
-def login():
-    return render_template('login.html')
-
-
 @app.route('/manual')
 def manual():
     return render_template('manual.html')
 
 
-@app.route('/progress')
-def progress():
-    return render_template('progress.html')
-
-
-@app.route('/rotate_puzzle')
-def rotate_puzzle():
-    return render_template('rotatePuzzle.html')
-
-
-@app.route('/settings')
-def settings():
-    return render_template('settings.html')
-
-
 @app.route('/win')
 def win():
     return render_template('win.html')
-
-
-@app.route('/manualv2')
-def manualv2():
-    return render_template('manualv2.html')
 # --- Flask templates Ends ---
 
 
 if __name__ == "__main__":
     mqtt_setup()
-    #testMQTT(client)
+    # testMQTT(client)
     runMQTT(client)
     app.run(host='0.0.0.0', port=8000, debug=False)

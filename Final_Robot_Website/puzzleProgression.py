@@ -1,3 +1,4 @@
+from time import sleep
 Client = None
 
 class Response(object):
@@ -27,7 +28,7 @@ def makeResponse(topic, trigger, responses):
 
 def responseChoice(type, value):
     match type:
-        case "publish":     # value = [topic, value]
+        case "publish":     # value = [topic, value].
             Client.publish(value[0], payload=value[1])
             return
         case "log":         # value: string
@@ -85,8 +86,13 @@ def testMQTT(client):
     print('published')
 
 # "simultaneous" responses (same completion conditions) go in order as listed here
-puzzleList = [makeResponse("Open Panel 1", ["run"], [["publish", ["room/setup/Motor1", "1,0"]], ["log", "sent 1,0 to motor 1"]]),
-              makeResponse("room/switch1", ["True"], [["log", "recieved true"]])]
+puzzleList = [
+    makeResponse("setup", ["start"], [["publish", ["room/setup/Motor1", "1,0"]], ["publish", ["room/setup/Servo1", "0,0"]]]),
+    makeResponse("switch1out", ["Switch1"], [["publish", ["Open Panel", "switch1out"]],["publish", ["Open Door", "switch1out"]]]),
+    makeResponse("room/switch1", ["True"], [["publish", ["switch1out", "Switch1"]]]),
+    makeResponse("Open Panel", ["switch1out"], [["publish", ["room/Servo1", "OPEN"]]]),
+    makeResponse("Open Door", ["switch1out"], [["publish", ["room/Motor1", "forwardTime,1.0,1.0"]]])
+    ]
 # template: makeResponse("", [""], [["", ]])
 
 def processSubscriptions(client, userdata, msg):
@@ -109,4 +115,6 @@ def runMQTT(client):
         sub = Client.subscribe(topic)
         if(sub[1]==128):
             print('Failed to subscribe to topics')
-    Client.publish("Open Panel 1", payload = "run")
+    Client.publish("setup", payload = "start")
+    sleep(1.0)
+    Client.publish("room/Servo1", payload="CLOSE")

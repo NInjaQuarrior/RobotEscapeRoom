@@ -23,21 +23,9 @@
     <button class="sidebarButton" type="button" id="homeButton" onclick=window.location="{{ url_for('main') }}"> <img
             src="static/Images/Home.png"></button>
 
-    <!-- <button class="sidebarButton" type="button" id="progressButton" onclick=window.location="{{ url_for('progress') }}">
-        <img src="static/Images/Progress.png"></button> -->
-
-    <button class="sidebarButton" type="button" id="lockButton" onclick=window.location="{{ url_for('hint') }}"> <img
-            src="static/Images/Hint.png"></button>
-
-    <!-- <button class="sidebarButton" type="button" id="settingsButton" onclick=window.location="{{ url_for('settings') }}">
-        <img src="static/Images/Settings.png"></button> -->
-
     <button class="sidebarButton" type="button" id="infoButton" onclick=window.location="{{ url_for('manual') }}"> <img
             src="static/Images/Info.png"></button>
 
-    <button id="hintButton" onClick=printHint()> Hint </button>
-
-    <!-- <img src="static/Images/Background.svg" class = "Background" id = "Background">  -->
 
     <!-- ROBOT FUNCTIONALITY -->
     <input id="camera_detect" type="checkbox" onclick="return false;"></input>
@@ -48,76 +36,9 @@
     <input id="blacklight" type="checkbox" onclick="return false;"></input>
     <div id="blacklight" style="margin-left: 25px;">Blacklight</div>
 
-    <!-- HINT BOX AND INPUT -->
-    <img id="fish" class="fishMain" src="static/Images/Robot.png"> </img>
-    <div id="hint_input" class="fishMain"> </div>
-
-    <!-- PUZZLE 3 SYMBOLS AND SUBMIT BUTTON -->
-    <!-- <div id="puzzle3"> </div>
-    <img id="alpha" src="static/Images/greek_alpha.png"> </img>
-    <img id="delta" src="static/Images/greek_delta.png"> </img>
-    <img id="epsilon" src="static/Images/greek_epsilon.png"> </img>
-    <img id="mu" src="static/Images/greek_mu.png"> </img>
-    <img id="sigma" src="static/Images/greek_sigma.png"> </img>
-    <img id="theta" src="static/Images/greek_theta.png"> </img>
-    <input type="checkbox" id="alphaBox" />
-    <input type="checkbox" id="deltaBox" />
-    <input type="checkbox" id="epsilonBox" />
-    <input type="checkbox" id="muBox" />
-    <input type="checkbox" id="sigmaBox" />
-    <input type="checkbox" id="thetaBox" />
-    <button id="submitButton" onClick=submitSymbols()> Submit </button> -->
-
-    <!-- <button onClick=show()> Show </button> -->
-
     <!-- ----------- FUNCTIONS ----------- -->
     <script>
         var client;
-        // PRINTS NEXT HINT FOR 
-        function printHint() {
-            let counter = parseInt(localStorage.getItem("counter"));
-            let curr_puzzle = parseInt(localStorage.getItem("curr_puzzle"));
-            let hint_num = -1;
-            if (counter >= 1 && counter <= 10) {
-                hint_num = (counter - 1) % 5 + 1;
-            } else if (counter >= 11 && counter <= 22) {
-                hint_num = (counter - 11) % 6 + 1;
-            } else if (counter >= 23 && counter <= 27) {
-                hint_num = (counter - 23) % 5 + 1;
-            }
-
-            if (counter <= 5) {
-                // alert(localStorage.getItem("calibration" + hint_num));
-                document.getElementById("hint_input").innerHTML = localStorage.getItem("calibration" + hint_num);
-                localStorage.setItem("Hint" + counter, "Unlocked");
-                counter = counter + 1;
-            } else if (counter >= 6 && counter <= 10 && curr_puzzle >= 2) {
-                // alert(localStorage.getItem("door" + hint_num));
-                document.getElementById("hint_input").innerHTML = localStorage.getItem("door" + hint_num);
-                localStorage.setItem("Hint" + counter, "Unlocked");
-                counter = counter + 1;
-            } else if (counter >= 11 && counter <= 16 && curr_puzzle >= 3) {
-                // alert(localStorage.getItem("lights" + hint_num));
-                document.getElementById("hint_input").innerHTML = localStorage.getItem("lights" + hint_num);
-                localStorage.setItem("Hint" + counter, "Unlocked");
-                counter = counter + 1;
-            } else if (counter >= 17 && counter <= 22 && curr_puzzle >= 4) {
-                // alert(localStorage.getItem("replacementParts" + hint_num));
-                document.getElementById("hint_input").innerHTML = localStorage.getItem("replacementParts" + hint_num);
-                localStorage.setItem("Hint" + counter, "Unlocked");
-                counter = counter + 1;
-            } else if (counter >= 23 && counter <= 27 && curr_puzzle >= 5) {
-                // alert(localStorage.getItem("tower" + hint_num));
-                document.getElementById("hint_input").innerHTML = localStorage.getItem("tower" + hint_num);
-                localStorage.setItem("Hint" + counter, "Unlocked");
-                counter = counter + 1;
-            } else {
-                alert("Check the Hints Page");
-            }
-
-            localStorage.setItem("counter", counter);
-        }
-
         function sleep(ms) {
             return new Promise(resolve => setTimeout(resolve, ms));
         }
@@ -142,59 +63,6 @@
                 wait(5);
             }
         }
-
-        // function hide() {
-        //        document.getElementById("camera_checkmark").style.visibility = hidden; 
-        //     document.getElementById("puzzle3").style.visibility = "hidden";
-        //     document.getElementById("alpha").style.visibility = "hidden";
-        //     document.getElementById("delta").style.visibility = "hidden";
-        //     document.getElementById("epsilon").style.visibility = "hidden";
-        //     document.getElementById("mu").style.visibility = "hidden";
-        //     document.getElementById("sigma").style.visibility = "hidden";
-        //     document.getElementById("theta").style.visibility = "hidden";
-        //     document.getElementById("alphaBox").style.visibility = "hidden";
-        //     document.getElementById("deltaBox").style.visibility = "hidden";
-        //     document.getElementById("epsilonBox").style.visibility = "hidden";
-        //     document.getElementById("muBox").style.visibility = "hidden";
-        //     document.getElementById("sigmaBox").style.visibility = "hidden";
-        //     document.getElementById("thetaBox").style.visibility = "hidden";
-        //     document.getElementById("submitButton").style.visibility = "hidden";
-        // }
-
-        // function show() {
-            // document.getElementById("camera_checkmark").style.visibility = visible; 
-        //     counter = 6;
-        //     curr_puzzle = 2;
-        //     localStorage.setItem("curr_puzzle", 3);
-        //     document.getElementById("puzzle3").style.visibility = "visible";
-        //     document.getElementById("alpha").style.visibility = "visible";
-        //     document.getElementById("delta").style.visibility = "visible";
-        //     document.getElementById("epsilon").style.visibility = "visible";
-        //     document.getElementById("mu").style.visibility = "visible";
-        //     document.getElementById("sigma").style.visibility = "visible";
-        //     document.getElementById("theta").style.visibility = "visible";
-        //     document.getElementById("alphaBox").style.visibility = "visible";
-        //     document.getElementById("deltaBox").style.visibility = "visible";
-        //     document.getElementById("epsilonBox").style.visibility = "visible";
-        //     document.getElementById("muBox").style.visibility = "visible";
-        //     document.getElementById("sigmaBox").style.visibility = "visible";
-        //     document.getElementById("thetaBox").style.visibility = "visible";
-        //     document.getElementById("submitButton").style.visibility = "visible";
-        //  }
-
-        // function submitSymbols() {
-        //     if (document.getElementById("alphaBox").checked == true &&
-        //         document.getElementById("deltaBox").checked == false &&
-        //         document.getElementById("epsilonBox").checked == true &&
-        //         document.getElementById("muBox").checked == false &&
-        //         document.getElementById("sigmaBox").checked == false &&
-        //         document.getElementById("thetaBox").checked == true
-        //     ) {
-        //         window.location = "{{ url_for('rotate_puzzle') }}";
-        //     } else {
-        //         alert("Incorrect, Please Try Again");
-        //     }
-        // }
 
         // --- MQTT Setup --- 
 
