@@ -13,8 +13,8 @@
     <title> MQP - Robot Escape Room </title>
     <h1> MQP - Robot Escape Room </h1>
     <h2 class="center"> Welcome to our escape room experience! <br><br> Note that all events are fictional and any <br>
-        resemblance to real life events or people is entirely coincidental. <br> If at any point you would like your
-        experience to come to an end, <br> please press the ESC button and wait for your escape room operator. </h2>
+        resemblance to real life events or people is entirely coincidental. <!--<br> If at any point you would like your
+        experience to come to an end, <br> please press the ESC button and wait for your escape room operator.--> </h2>
 
     <!------------- BUTTONS ------------->
     <div align="center">
@@ -26,10 +26,10 @@
     <script>
         function setup() {
             hide();
-            startConnect();
+            // startConnect();
             // publishMessage("robot/function", "disable move");
             text2speech();
-            setTimeout(function () { show(); }, 19000)
+            setTimeout(function () { show(); }, 5000)
         }
 
         function sleep(ms) {
@@ -48,7 +48,7 @@
 
         function text2speech() {
             var msg = new SpeechSynthesisUtterance();
-            msg.text = "Welcome to our escape room experience! Please note that all events are fictional and any resemblance to real life events or people is entirely coincidental. If at any point you would like your experience to come to an end, please press the escape button and wait for your escape room operator";
+            msg.text = "Welcome to our escape room experience! Please note that all events are fictional and any resemblance to real life events or people is entirely coincidental.";
             window.speechSynthesis.speak(msg);
         }
 

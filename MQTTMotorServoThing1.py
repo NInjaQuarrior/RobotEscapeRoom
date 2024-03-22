@@ -38,7 +38,7 @@ class MyMotor:
         sleep(time)
         self.stop()
         
-    def reverseTime(speed, time):
+    def reverseTime(self, speed, time):
         self.reverse(speed)
         sleep(time)
         self.stop()
@@ -141,6 +141,12 @@ class MQTTController:
         speed = int(split[1])
         time = int(split[2])
         #TODO add feature to come back and stop, ie multiple cues to one controller
+        '''
+        if msg == "OPEN":
+            motor.forwardTime(3.0, 1.4)
+        elif msg == "CLOSE": #necessary?
+            motor.reverseTime(3.0, 1.4)
+        '''
         if move_type == "forward":
             motor.forward(speed)
         elif move_type == "reverse":

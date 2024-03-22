@@ -38,7 +38,7 @@ class MyMotor:
         sleep(time)
         self.stop()
         
-    def reverseTime(speed, time):
+    def reverseTime(self, speed, time):
         self.reverse(speed)
         sleep(time)
         self.stop()
@@ -108,6 +108,23 @@ class MQTTController:
         self.isSetup = True
         print(self.isSetup)
         
+    #message is "OPEN" or "CLOSE"
+    def motorCallback2(self, topic, msg):
+        motor = MyMotor()
+        
+        print("New message on topic {}".format(topic.decode('utf-8')))
+        msg = msg.decode('utf-8')
+        print(msg)
+        
+        if msg == "OPEN":
+            print("dunno how to open a door")
+            #TODO open door call: forwardTime(someVal, someOtherVal)
+        elif msg == "CLOSE":
+            print("dunno how to close a door")
+            #TODO close door call: reverseTime(someVal, someOtherVal)
+        #potential TODO door speed input & accomodating math?
+            
+        self.waitingForPuzzle = False
     #take message in order "move_type,speed,time"
     def motorCallback(self,topic, msg):
         motor = MyMotor()
@@ -151,7 +168,7 @@ class MQTTController:
         #print("out of loop1")
         if self.ee_type == "Motor":
             print("set call motor")
-            self.client.set_callback(self.motorCallback)
+            self.client.set_callback(self.motorCallback2)
         elif self.ee_type == "Servo":
             print("set call servo")
             self.client.set_callback(self.servoCallback)

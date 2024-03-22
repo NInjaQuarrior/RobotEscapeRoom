@@ -26,7 +26,7 @@ from puzzleProgression import testMQTT, runMQTT
 
 # --- MQTT Setup ---
 
-pi_ip_address = '192.168.1.2'
+pi_ip_address = '192.168.1.33'
 client = mqtt.Client(client_id="web_stream", clean_session=True)
 
 

@@ -21,6 +21,7 @@ class Response(object):
             for response in self.responses:
                 responseChoice(response[0], response[1])
             self.completed = True
+            responseChoice("unsubscribe", self.topic)
 
 def makeResponse(topic, trigger, responses):
     response = Response(topic, trigger, responses)
@@ -87,11 +88,11 @@ def testMQTT(client):
 
 # "simultaneous" responses (same completion conditions) go in order as listed here
 puzzleList = [
-    makeResponse("setup", ["start"], [["publish", ["room/setup/Motor1", "1,0"]], ["publish", ["room/setup/Servo1", "0,0"]]]),
+    makeResponse("setup", ["start"], [["publish", ["room/setup/Motor1", "1,0"]], ["publish", ["room/setup/Servo1", "0,0"]], ["publish", ["room/Servo1", "CLOSE"]]]),
     makeResponse("switch1out", ["Switch1"], [["publish", ["Open Panel", "switch1out"]],["publish", ["Open Door", "switch1out"]]]),
     makeResponse("room/switch1", ["True"], [["publish", ["switch1out", "Switch1"]]]),
     makeResponse("Open Panel", ["switch1out"], [["publish", ["room/Servo1", "OPEN"]]]),
-    makeResponse("Open Door", ["switch1out"], [["publish", ["room/Motor1", "forwardTime,1.0,1.0"]]])
+    makeResponse("Open Door", ["switch1out"], [["publish", ["room/Motor1", "forwardTime,3.0,1.4"]]]) #door open
     ]
 # template: makeResponse("", [""], [["", ]])
 
@@ -117,4 +118,4 @@ def runMQTT(client):
             print('Failed to subscribe to topics')
     Client.publish("setup", payload = "start")
     sleep(1.0)
-    Client.publish("room/Servo1", payload="CLOSE")
+    Client.publish("room/Motor1", "forwardTime,1.0,1.0")
