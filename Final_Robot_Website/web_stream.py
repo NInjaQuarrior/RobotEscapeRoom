@@ -8,7 +8,8 @@
         https://towardsdatascience.com/video-streaming-in-web-browsers-with-opencv-flask-93a38846fe00
 """
 # Import necessary libraries
-from flask import Flask, render_template, Response
+from flask import Flask, render_template, redirect, request, url_for, session, send_file, Response
+from flask_session import Session
 import cv2
 import cv2.aruco as aruco
 import numpy as np
@@ -19,6 +20,9 @@ import paho.mqtt.client as mqtt
 app = Flask(__name__)
 camera = cv2.VideoCapture(0)
 scan_enabled = False
+
+Session(app)
+app.secret_key = 'RobotEscapeRoomMQP2324'
 
 #import puzzle script (from upload file later on?)
 from puzzleProgression import testMQTT, runMQTT
@@ -159,13 +163,28 @@ def main():
 def video_feed():
     return Response(gen_frames(), mimetype='multipart/x-mixed-replace; boundary=frame')
 
-
-@app.route('/loadScript')
+@app.route('/loadScript', methods=['GET', 'POST'])
 def loadScript():
-    return render_template("loadScript.html")
+    file_content = session.get('file_content', '')
 
+    if request.method == 'POST':
+        if 'fileInput' not in request.files:
+            return 'No file part'
 
-@app.route('/')
+        file = request.files['fileInput']
+
+        if file.filename == '':
+            return 'No selected file'
+
+        file_content = file.read().decode('utf-8')
+
+        session['file_content'] = file_content
+        
+        print("File Content:")
+        print(file_content)
+
+    return render_template('loadScript.html', file_content=file_content)
+
 @app.route('/disclaimer')
 def disclaimer():
     return render_template('disclaimer.html')

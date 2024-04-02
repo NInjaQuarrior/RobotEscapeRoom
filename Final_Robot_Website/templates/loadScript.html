@@ -1,1 +1,21 @@
-<!-- redirect to main -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='/static/styles.css'>
+    <title>Escape Room Website</title>
+</head>
+
+<body>
+    <form id="pythonUpload" action="/loadScript" method="post" enctype="multipart/form-data">
+        <label>Upload Python File: <input type="file" name="fileInput" id="fileInput" accept=".py"></label><br/>
+        <input type="submit" value="Upload File">
+    </form>
+
+    <h1>Uploaded File Content:</h1>
+    <pre>{{ file_content }}</pre>
+</body>
+
+</html>
