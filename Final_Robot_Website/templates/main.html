@@ -5,7 +5,7 @@
     <link rel="stylesheet" href='/static/sidebar.css'>
     <link rel="stylesheet" href='/static/styles.css'>
     <link rel="import" href="{{ url_for('hint') }}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"> </script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"> </script> -->
     <script src="/static/mqtt.js" type="text/javascript"></script>
 </head>
 
@@ -15,7 +15,8 @@
     <title> MQP - Robot Escape Room </title>
     <!-- <h1> MQP - Robot Escape Room </h1> -->
     <div id="sqr">
-        <img src="{{ url_for('video_feed') }}" id="videoElement">
+        <!-- <img src="{{ url_for('video_feed') }}" id="videoElement"> -->
+		<iframe src="//192.168.1.33" id="videoElement"></iframe>
         </video>
     </div>
 
