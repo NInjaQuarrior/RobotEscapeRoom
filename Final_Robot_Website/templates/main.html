@@ -14,8 +14,7 @@
     <title> MQP - Robot Escape Room </title>
     <!-- <h1> MQP - Robot Escape Room </h1> -->
     <div id="sqr">
-        <!-- <img src="{{ url_for('video_feed') }}" id="videoElement"> -->
-		<iframe src="//192.168.1.33" id="videoElement"></iframe>
+		<iframe src="//192.168.1.6:8081" id="videoElement"></iframe>
         </video>
     </div>
 
@@ -56,139 +55,12 @@
                 alert("Password Accepted");
                 localStorage.setItem("password_prompt", "accepted");
                 sleep(100);
-                window.location = "{{ url_for('rotate_puzzle') }}";
             }
             else {
                 alert("Password Denied \nWait for 5 seconds until you can scan again.");
                 wait(5);
             }
         }
-
-        // --- MQTT Setup --- 
-
-        function startConnect() {
-            // Creating a new client instance 
-            clientID = "website-escape-room";
-            host = "mqtt.eclipseprojects.io",
-                port = 80;
-            client = new Paho.MQTT.Client(host, Number(port), clientID);
-            client.onMessageArrived = onMessageArrived;
-            client.connect({
-                onSuccess: onConnect
-            });
-        }
-
-        // TODO: add topics to subscribe accordingly 
-        function onConnect() {
-            // client.subscribe("robot/test");
-            client.subscribe("robot/aruco");
-            client.subscribe("robot/puzzle");
-            client.subscribe("robot/function");
-            client.subscribe("room/puzzle");
-            client.subscribe("website/status");
-            console.log("successfully connected to topics.");
-            publishMessage("robot/function", "enable move");
-        }
-
-        // TODO: change topic names and msgs accordingly 
-        function onMessageArrived(msg) {
-            console.log("OnMessageArrived: " + msg.payloadString + "\tfrom Topic: " + msg.destinationName);
-            // set current puzzle flag (for hint display, etc)
-            if (msg.destinationName == "room/puzzle") {
-                curr_puzzle = parseInt(msg.payloadString);
-                localStorage.setItem("curr_puzzle", curr_puzzle);
-                if (curr_puzzle == 1) {
-                    localStorage.setItem("counter", 1);
-                } else if (curr_puzzle == 2) {
-                    localStorage.setItem("counter", 6);
-                    for (let i = 1; i < 6; i++) {
-                        localStorage.setItem("Hint" + i, "Unlocked");
-                    }
-                } else if (curr_puzzle == 3) {
-                    localStorage.setItem("counter", 11);
-                    for (let i = 6; i < 11; i++) {
-                        localStorage.setItem("Hint" + i, "Unlocked");
-                    }
-                } else if (curr_puzzle == 4) {
-                    localStorage.setItem("counter", 17);
-                    for (let i = 11; i < 17; i++) {
-                        localStorage.setItem("Hint" + i, "Unlocked");
-                    }
-                } else if (curr_puzzle == 5) {
-                    localStorage.setItem("counter", 23);
-                    for (let i = 17; i < 23; i++) {
-                        localStorage.setItem("Hint" + i, "Unlocked");
-                    }
-                }
-            }
-            // lose the game if esc is pressed 
-            if (msg.destinationName == "website/status") {
-                if (msg.payloadString == "escape") {
-                    window.location = "{{ url_for('end_page') }}";
-                }
-            }
-            // puzzle wizard of oz 
-            if (msg.destinationName == "robot/puzzle") {
-                if (msg.payloadString == "1") {
-                    localStorage.setItem("curr_puzzle", parseInt(msg.payloadString));
-                } else if (msg.payloadString == "2") {
-                    localStorage.setItem("curr_puzzle", parseInt(msg.payloadString));
-                } else if (msg.payloadString == "3") {
-                    localStorage.setItem("curr_puzzle", parseInt(msg.payloadString));
-                } else if (msg.payloadString == "4") {
-                    localStorage.setItem("curr_puzzle", parseInt(msg.payloadString));
-                } else if (msg.payloadString == "5") {
-                    localStorage.setItem("curr_puzzle", parseInt(msg.payloadString));
-                }
-            }
-            // toaster pop-up for password prompt
-            if (msg.destinationName == "robot/aruco" && localStorage.getItem("password_prompt") == "prompted") {
-                if (msg.payloadString == "aruco valid") {
-                    // if simon says is completed 
-                    if (parseInt(localStorage.getItem("curr_puzzle")) >= 2) {
-                        scanPassword();
-                        // show rotate puzzle if password is correct 
-                        if (localStorage.getItem("password_prompt") == "accepted") {
-                            window.location = "{{ url_for('rotate_puzzle') }}";
-                        }
-                    } else {
-                        alert("The room is not calibrated!");
-                        wait(3);
-                    }
-                }
-            }
-            // set robot functionality (on/off)
-            if (msg.destinationName == "robot/function") {
-                if (msg.payloadString == "enable scan") {
-                    document.getElementById("camera_detect").checked = true;
-                    localStorage.setItem("camera_detect", "true");
-                } else if (msg.payloadString == "disable scan") {
-                    document.getElementById("camera_detect").checked = false;
-                    localStorage.setItem("camera_detect", "false");
-                } else if (msg.payloadString == "enable light") {
-                    document.getElementById("light").checked = true;
-                    localStorage.setItem("light", "true");
-                } else if (msg.payloadString == "disable light") {
-                    document.getElementById("light").checked = false;
-                    localStorage.setItem("light", "false");
-                } else if (msg.payloadString == "enable blacklight") {
-                    document.getElementById("blacklight").checked = true;
-                    localStorage.setItem("blacklight", "true");
-                } else if (msg.payloadString == "disable blacklight") {
-                    document.getElementById("blacklight").checked = false;
-                    localStorage.setItem("blacklight", "false");
-                }
-            }
-        }
-
-        function publishMessage(topic, msg) {
-            Message = new Paho.MQTT.Message(msg);
-            Message.destinationName = topic;
-
-            client.send(Message);
-            console.log("topic: " + topic + "\tmsg: " + msg);
-        }
-        // --- MQTT Setup Ends ---
 
         function text2speech() {
             var msg = new SpeechSynthesisUtterance();
@@ -206,9 +78,7 @@
         }
 
         function setup() {
-            startConnect();
             set_robot_function();
-            hide();
         }
 
     </script>
