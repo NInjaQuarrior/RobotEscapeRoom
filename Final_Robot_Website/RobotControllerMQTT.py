@@ -3,7 +3,7 @@ import keyboard
 
 
 client = mqtt.Client(client_id="Robot_Controller")
-mqtt_address = '192.168.1.33'
+mqtt_address = '192.168.1.6'
 
 motionTopic = "robot/motion"
 cameraTopic = "robot/util/camera"
@@ -159,11 +159,11 @@ def setUpBinds():
         #toggle blacklight
         keyboard.on_press_key("b",toggleBlack)
 
-
-
-        
-if __name__ == '__main__':
+def runControls():
     mqtt_setup()
     #com = Commands()
     setUpBinds()
     keyboard.wait()
+        
+if __name__ == '__main__':
+	runControls()

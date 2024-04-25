@@ -6,9 +6,73 @@
     <link rel="stylesheet" href='/static/styles.css'>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.0.1/mqttws31.js" type="text/javascript"> </script> -->
     <script src="/static/mqtt.js" type="text/javascript"></script>
+	<style>
+		.buttonUI{
+			width: 36px;
+			height: 36px;
+
+			color: white;
+			background-color: black;
+			font-weight: bold;
+			border-style: solid;
+			border-width: 2px;
+			border-color: grey;
+
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.blank{
+			width: 40px;
+			height: 40px;
+		}
+		#camera{
+			position: absolute;
+			top: 150px;
+			left: 890px;
+			width: 200px;
+			text-align: center;
+			font-size:large;
+		}
+		#camera>div{
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+		}
+		#arm{
+			position: absolute;
+			top: 300px;
+			left: 1200px;
+			text-align: center;
+			font-size:large;
+
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+		#movement{
+			position: absolute;
+			top: 300px;
+			left: 925px;
+			width: 140px;
+			height: 120px;
+			font-size:large;
+
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: space-between;
+			align-content: space-between;
+		}
+		#movement > p{
+			width: 100%;
+			text-align: center;
+			margin: 5px;
+		}
+	</style>
 </head>
 
-<body onload=setup()>
+<body>
     <!-- <body> -->
     <!-- ----------- HEADERS ----------- -->
     <title> MQP - Robot Escape Room </title>
@@ -26,14 +90,32 @@
             src="static/Images/Info.png"></button>
 
 
-    <!-- ROBOT FUNCTIONALITY -->
-    <input id="camera_detect" type="checkbox" onclick="return false;"></input>
-    <!-- <div id = "camera_checkmark"> &#x2713 </div> --> 
-    <div id="camera_detect" style="margin-left: 25px;">Scan Code</div>
-    <input id="light" type="checkbox" onclick="return false;"></input>
-    <div id="light" style="margin-left: 25px;"> Light</div>
-    <input id="blacklight" type="checkbox" onclick="return false;"></input>
-    <div id="blacklight" style="margin-left: 25px;">Blacklight</div>
+    <!-- ROBOT CONTROLS -->
+	<!-- Camera servo is not working -->
+	<!-- <div id="camera">
+		<div>
+			<p>Up</p><h3>Camera</h3><p>Down</p>
+		</div>
+		<div>
+			<div class="buttonUI" id="cameraUp">Q</div>
+			<div class="buttonUI" id="cameraDown">E</div>
+		</div>
+    </div> -->
+	<div id="arm">
+        <div class="buttonUI" id="armUp">R</div>
+        Up
+        <h3>Arm</h3>
+        Down
+        <div class="buttonUI" id="armDown">F</div>
+    </div>
+    <div id="movement">
+        <p>Movement </p>
+		<div class="blank"></div> <div class="buttonUI"> W </div> <div class="blank"></div>
+        <div class="buttonUI"> A </div> <div class="buttonUI"> S </div> <div class="buttonUI"> D </div>
+		<div class="blank"></div> <div class="blank"></div> <div class="blank"></div>
+        <div class="blank"></div> <div class="buttonUI"> &#8679; </div> <div class="blank"></div>
+        <div class="buttonUI"> &#8678; </div> <div class="buttonUI"> &#8681; </div> <div class="buttonUI"> &#8680; </div>
+    </div>
 
     <!-- ----------- FUNCTIONS ----------- -->
     <script>
@@ -66,20 +148,7 @@
             var msg = new SpeechSynthesisUtterance();
             msg.text = "Hello World";
             window.speechSynthesis.speak(msg);
-        }
-
-        function set_robot_function() {
-            camera_enabled = localStorage.getItem("camera_detect");
-            light_enabled = localStorage.getItem("light");
-            blight_enabled = localStorage.getItem("blacklight");
-            document.getElementById("camera_detect").checked = (camera_enabled == "true");
-            document.getElementById("light").checked = (light_enabled == "true");
-            document.getElementById("blacklight").checked = (blight_enabled == "true");
-        }
-
-        function setup() {
-            set_robot_function();
-        }
+		}
 
     </script>
 

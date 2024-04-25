@@ -24,146 +24,23 @@ form {
     text-align: center;
 }
 
-/* STYLE FOR CLASSES */
-.fishMain {
-    display: inline-block;
-}
-
 /* STYLE FOR IDS */
-#vidBut {
-    position: absolute;
-    left: 1200px;
-}
-
 #videoElement {
     position: absolute;
-    /* golden ratio: 1000 x 600 */
-    width: 800px;
+    /* ratio: 640 x 480 */
+    width: 640px;
     height: 480px;
-    top: 55px;
-    left: 45px;
-    /* background:rgb(100, 120, 145); */
+    top: 50%;
+	transform:translateY(-50%);
+    left: 80px;
 }
 
-#fish {
-    position: absolute;
-    top: 100px;
-    left: 900px;
-    width: 150px;
-    height: 150px;
-}
-
-#hint_input {
-    position: absolute;
-    top: 110px; 
-    left: 1050px; 
-    margin-right: 7%;
-}
-
-#hintButton {
-    position: absolute;
-    top: 80px;
-    left: 955px;
-}
-
-#Background {
-    width: 200%;
-    height: 200%;
-}
-
-#alpha {
-    position: absolute;
-    top: 500px;
-    left: 900px;
-}
-
-#delta {
-    position: absolute;
-    top: 500px;
-    left: 980px;
-}
-
-#epsilon {
-    position: absolute;
-    top: 500px;
-    left: 1060px;
-}
-
-#mu {
-    position: absolute;
-    top: 500px;
-    left: 1140px;
-}
-
-#sigma {
-    position: absolute;
-    top: 500px;
-    left: 1220px;
-}
-
-#theta {
-    position: absolute;
-    top: 500px;
-    left: 1300px;
-}
-
-#alphaBox {
-    position: absolute;
-    top: 550px;
-    left: 910px;
-}
-
-#deltaBox {
-    position: absolute;
-    top: 550px;
-    left: 990px;
-}
-
-#epsilonBox {
-    position: absolute;
-    top: 550px;
-    left: 1070px;
-}
-
-#muBox {
-    position: absolute;
-    top: 550px;
-    left: 1150px;
-}
-
-#sigmaBox {
-    position: absolute;
-    top: 550px;
-    left: 1230px;
-}
-
-#thetaBox {
-    position: absolute;
-    top: 550px;
-    left: 1310px;
-}
 
 #submitButton {
     position: absolute;
     top: 600px;
     left: 1090px;
     width: 60px;
-}
-
-#puzzle3 {
-    position: absolute;
-    width: 300px;
-    border: 5px solid white;
-    padding: 100px;
-    top: 450px;
-    left: 865px;
-}
-
-#camera_detect {
-    position: absolute; 
-    float: left; 
-    left: 900px; 
-    top: 300px; 
 }
 
 #light {

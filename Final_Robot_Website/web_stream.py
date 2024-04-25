@@ -4,6 +4,8 @@ from flask_session import Session
 import cv2
 import os
 import paho.mqtt.client as mqtt
+import multiprocessing
+from RobotControllerMQTT import runControls
 
 # Initialize the Flask app
 app = Flask(__name__)
@@ -14,12 +16,13 @@ Session(app)
 app.secret_key = 'RobotEscapeRoomMQP2324'
 
 #import puzzle script (from upload file later on?)
-from puzzleProgression import testMQTT, runMQTT
+#from puzzleProgression import testMQTT, runMQTT
+from puzzle_list import runMQTT
 
 
 # --- MQTT Setup ---
 
-pi_ip_address = '192.168.1.33'
+pi_ip_address = '192.168.1.6'
 client = mqtt.Client(client_id="web_stream", clean_session=True)
 
 
@@ -101,5 +104,9 @@ if __name__ == "__main__":
     # testMQTT(client)
     runMQTT(client)
     app.run(host='0.0.0.0', port=8000, debug=False)
-    # with open("Final_Robot_Website/RobotControllerMQTT.py") as file:
-    #     exec(file.read())
+    # webstream = multiprocessing.Process(target = app.run(host='0.0.0.0', port=8000, debug=False))
+    # controls = multiprocessing.Process(target = runControls)
+    # webstream.start()
+    # controls.start()
+    # webstream.join()
+    # controls.join()
