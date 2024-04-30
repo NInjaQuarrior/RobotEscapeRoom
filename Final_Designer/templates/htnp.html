@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="static/css/htnp.css">
+	<title>Robot Escape Room Designer</title>
+</head>
+<body>
+
+<div class="instructions">
+    <p> Use this page to create the puzzle flows. <br>
+		<b>Left clicking</b> the area to the right will create a node on a grid near your mouse.<br>
+		<b>Right clicking</b> the node or connection will remove it.<br>
+		<b>Double clicking</b> the node allows you to rename it.<br><br>
+		Each node can take an input from the room and/or produce an output back to it. You can link nodes together to have one room input trigger multiple events, or require multiple inputs to trigger one event. You can connect nodes by <b>left clicking</b> the input box (to the left of the node) of one and the output box (to the right of the node) of another.
+	</p> 
+</div>   
+
+<div class="container clearfix" id="main">
+</div>
+
+<script>
+   function redirectToLayout() {
+        console.log("Redirecting to Layout");
+        saveProgression();
+        window.location.href = "{{ url_for('build') }}";
+    }
+
+    function redirectToFinal() {
+        console.log("Redirecting to Final Layout");
+        saveProgression();
+        window.location.href = "{{ url_for('finalProduct') }}";
+    }
+
+</script>
+<button id="previous" onclick="redirectToLayout()"> To Room Layout </button>
+<button id="submit" onclick="redirectToFinal()"> To Final Layout </button>
+<script src="static/js/htnp.js"></script>
+</body>
+</html>

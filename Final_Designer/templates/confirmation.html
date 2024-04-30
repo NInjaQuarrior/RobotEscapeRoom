@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href='/static/css/styles.css'>
+        <title>Escape Room Builder</title>
+        <script>
+            function showPopup(message) {
+                alert(message);
+                window.location.href = "/roomLayout";  // Redirect to the /verify page
+            }
+
+            window.onload = function() {
+                var message = '{{ message }}';
+                showPopup(message);
+            };
+        </script>
+    </head>
+    <body onload="showPopup('{{ message }}')">
+        <p>{{ message }}</p>
+    </body>
+</html>

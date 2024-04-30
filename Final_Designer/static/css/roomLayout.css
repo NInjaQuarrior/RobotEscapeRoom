@@ -1,0 +1,83 @@
+:root{
+    --size: 100px;
+    --difference: 40px;
+}
+
+body{
+    background-color: #131231;
+}
+
+#previous{
+    position: absolute;
+    right: 50%;
+    bottom: 5%;
+}
+#submit{
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+}
+
+#fsm{
+    position: absolute;
+    left: 60%;
+    bottom: 5%;
+}
+
+
+.disabled{
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+#pieces{
+    background: white;
+    color: black;
+    width:33%;
+    height: 80%;
+    position: absolute;
+    left: 5%;
+    padding: 2%;
+    overflow: auto;
+}
+
+canvas{
+    position: absolute;
+    right: 5%;
+    background-color: white;
+}
+
+#floorEdit, #floorMap, #testimg{
+    position: absolute;
+    right:5%;
+    width: 700px;
+    height: 700px;
+}
+
+button{
+    position:absolute;
+    z-index: 1;
+}
+
+#floorDropdown, #wallDropdown{
+    position: absolute;
+    background-color: cyan;
+    z-index: 1;
+    visibility: hidden;
+}
+
+img{
+    position: absolute;
+}
+
+p{
+    position: relative;
+    height: 50px;
+    left: 50px;
+	width: calc(90% - 25px)
+}
+
+p>img{
+    background-color: white;
+    left: -55px
+}

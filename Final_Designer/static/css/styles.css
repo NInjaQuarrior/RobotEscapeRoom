@@ -1,0 +1,27 @@
+body {
+    background-color: #131231;
+    color: white;
+    width: 10%;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}
+
+p {
+    color: white;
+}
+
+/* STYLE FOR TAGS */
+img {
+    width: 40px;
+    height: 40px;
+}
+
+form {
+    color: white;
+    text-align: center;
+}
+
+

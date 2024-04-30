@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="static/css/finalProduct.css">
+		<title>Robot Escape Room Designer</title>
+    </head>
+    <body>
+        <div id="buttons-container">
+            <!-- <form id="pdfForm" action="/generatePDF" method="post">
+                <input type="hidden" id="canvasContent" name="canvas_content">
+                <input type="hidden" id="consoleOutput" name="console_output">
+                <input type="submit" id="generate-pdf" value="Generate PDF">
+            </form> -->
+        </div>
+        <canvas id="roomCanvas" width="700px" height="700px"></canvas>
+        <div id="canvasDiv"></div>
+
+		<div id="output">
+            <h2>To build the escape room, the following parts are needed:</h2>
+        </div>
+        <div id="instructions" class="hidden">
+            <h2>Instruction for room assembly:</h2>
+            <ul>
+                <li>Starting from a corner of the room, connect them using a top corner connection, then continue by building out the sides, connecting using the top pieces. Either assemble the walls upside down, or flip them once assembled.</li>
+                <li>Now upside-down, place the floor tiles on top, connecting them to the walls as you go. Once fully assembled, flip it back over, using a large board for support if need be.</li>
+                <li style="position:relative; left:20px">Note: Inner corners use a four-way connection instead of a corner bottom.</li>
+                <li>Plug in all the pieces, and run the website, importing the python file provided here.</li>
+            </ul>
+        </div>
+        <script>
+            var pdfkit = '{{ pdfkit }}';
+
+            function redirectToLayout() {
+                console.log("Redirecting to Layout");
+                window.location.href = "{{ url_for('build') }}";
+            }
+            function redirectToHTNP() {
+                console.log("Redirecting to HTNP");
+                window.location.href = "{{ url_for('planner') }}";
+            }
+        </script>
+        <button id="previous" onclick="redirectToLayout()"> To Room Layout </button>
+        <button id="submit" onclick="redirectToHTNP()"> Puzzle Progression </button>
+        <button id="downloadButton">Download Escape Room Progression</button>
+        <script src="/static/js/finalProduct.js"></script>
+		<button id="switch" onclick="swap()">Pieces/Assembly</button>
+    </body>
+</html>

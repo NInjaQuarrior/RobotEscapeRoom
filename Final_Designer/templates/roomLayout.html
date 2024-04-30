@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="static/css/roomLayout.css">
+    </head>
+    <body>
+        <title>Robot Escape Room Designer</title>
+
+        <div id="pieces">
+            <h1>Instructions:</h1>
+            <b>Left click</b> on the canvas to add or remove a floor section.<br/>
+            <b>Right click</b> a floor or wall section to bring up a menu for it. <br/>
+            <h1>Legend:</h1>
+        </div>
+
+        <canvas id="roomCanvas" width="700px" height="700px"></canvas>
+        <div id="floorEdit">
+            <div id="floorDropdown">
+                <select name="floorType" id="floorSelect"><option value="floor">Plain floor</option></select><br/>
+                <button id="deleteFloor" onclick="removeSelectedFloor()">Remove Section</button>
+            </div>
+            <div id="wallDropdown">
+                <select name="wallType" id="wallSelect"><option value="wall">Plain wall</option></select>
+            </div>
+        </div>
+        <map name="floorMap" id="floorMap"></map>
+        <img id="testimg" usemap="#floorMap">
+
+        <script src="{{url_for('static', filename='js/roomLayout.js')}}"></script>
+        <script>
+            function redirectToHTNP() {
+                console.log("Redirecting to HTNP");
+                saveRoom();
+                window.location.href = "{{ url_for('planner') }}";
+            }
+
+        </script>
+        <button id="submit" onclick="redirectToHTNP()"> Puzzle Progression </button>
+    </body>
+</html>

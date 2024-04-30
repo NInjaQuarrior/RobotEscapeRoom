@@ -1,0 +1,130 @@
+#buttons-container {
+    margin-bottom: 20px;
+}
+
+body{
+    background-color: #131231;
+    color: white;
+}
+
+:root{
+    --size: 100px;
+    --difference: 40px;
+}
+
+#previous {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    z-index: 1;
+}
+
+#generate-pdf {
+    position: absolute;
+    left: 50%; 
+    transform: translateX(-50%);
+    bottom: 5%;
+    z-index: 1;
+}
+
+#submit {
+    position: absolute;
+    right: 50%;
+    bottom: 5%;
+    z-index: 1;
+}
+
+.disabled{
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+#pieces{
+    background: green;
+    color: white;
+    width:20%;
+    height: 70%;
+    position: absolute;
+    left: 5%;
+    padding: 2%;
+}
+
+canvas{
+    position: absolute;
+    right: 5%;
+    background-color: white;
+}
+
+#floorEdit, #floorMap, #testimg, #canvasDiv{
+    position: absolute;
+    right:5%;
+    width: 700px;
+    height: 700px;
+}
+
+button{
+    position:absolute;
+    z-index: 1;
+}
+
+#floorDropdown, #wallDropdown{
+    position: absolute;
+    background-color: cyan;
+    z-index: 1;
+    visibility: hidden;
+}
+
+img{
+    position: absolute;
+}
+
+p{
+    position: relative;
+    height: 50px;
+    left: 50px;
+}
+
+p>img{
+    background-color: white;
+    left: -55px
+}
+
+#pyOutput{
+    width: 30%;
+    height: 70%;
+}
+
+#output, #instructions{
+    overflow-y: scroll;
+    position: absolute;
+    width: 40%;
+    height: 600px;
+    top: 5%;
+}
+
+#instructions{
+    overflow:hidden;
+}
+
+#instructions>p{
+    word-wrap: break-word;
+    left:0%;
+}
+
+.object-container>img{
+    position:relative;
+    left: 200px;
+}
+
+.hidden{
+    visibility: hidden;
+}
+
+#downloadButton{
+    position: absolute;
+    bottom: 5%;
+}
+
+li{
+    padding: 5px;
+}

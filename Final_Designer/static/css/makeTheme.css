@@ -1,0 +1,49 @@
+#previous{
+    position: absolute;
+    right: 50%;
+    bottom: 5%;
+}
+#submit{
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+}
+
+#customCreator{
+    font-size: 20px;
+}
+input[type=color]{
+    padding: 0;
+    outline: none;
+    border: none;
+    height: 35px;
+    width: 35px;
+}
+
+#themePreview{
+    position: absolute;
+    right: 5%;
+    top: 10%;
+    width: 40%;
+    height: 80%;
+    background-color: var(--bgColor);
+    color: var(--fontColor);
+    padding-left: 10px;
+    margin:0%;
+}
+
+#themePreview>button{
+    background-color: var(--lowContrast);
+    color: var(--fontColor);
+    height: 40px;
+}
+
+img{
+    width: 50px;
+    background-color: black;
+}
+
+.disabled{
+    opacity: 0.4;
+    pointer-events: none;
+}

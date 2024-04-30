@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <link type="text/css" rel="stylesheet" href="static/css/makeTheme.css">
+    </head>
+    <body>
+        <title>Robot Escape Room Designer</title>
+
+        <div id="themeSelection">
+            <h2>Select a theme default:</h2>
+            <input type="radio" name="theme" id="light" value="light"><label for="light">Light</label>
+            <input type="radio" name="theme" id="dark" value="dark"><label for="dark">Dark</label>
+            <input type="radio" name="theme" id="custom" value="custom"><label for="custom">Custom</label><br>
+            (Light and Dark will always be available for the user)
+        </div>
+
+        <div id="customCreator" disabled>
+            <h3> Custom Theme:</h3>
+            Background Color: <input type="color" id="bgColor" value="#131231"> Image upload?<br>
+            Text Color: <input type="color" id="fontColor" value="#FFFFFF"><br>
+            Button Background: <input type="color" id="lowContrast" value="#000000"><br>
+            Image Brightness:?
+        </div>
+
+        <div id="themePreview">
+            <h1> Header </h1>
+            <button>Button</button>
+            <img src="/static/img/Settings.png">
+        </div>
+
+        <script>
+            function redirectToFSM() {
+                console.log("Redirecting to FSM");
+                saveTheme();
+                window.location.href = "{{ url_for('state_machine') }}";
+            }
+            function redirectToFinal() {
+                console.log("Redirecting to Final");
+                saveTheme();
+                window.location.href = "{{ url_for('finalProduct') }}";
+            }
+        </script>
+
+        <button id="previous" onclick="redirectToFSM()"> Puzzle Progression </button>
+        <button id="submit" onclick="redirectToFinal()"> Finalize </button>
+        <script src="{{url_for('static', filename='js/makeTheme.js')}}"></script>
+    </body>
+</html>

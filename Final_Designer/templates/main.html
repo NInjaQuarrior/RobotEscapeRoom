@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href='/static/css/styles.css'>
+    <title>Escape Room Builder</title>
+</head>
+
+<body>
+
+    <h1>Escape Room Builder</h1>
+
+    <form id="escapeRoomForm" form action="/verify" method="post" enctype="multipart/form-data">
+        <label for="roomName">Room Name:</label>
+        <input type="text" id="roomName" name="roomName" required>
+
+        <label for="description">Room Description:</label>
+        <input type="text" id="description" name="description" required>
+
+        <img src="/static/img/samplepuzzle1.jpg"><br/>
+        <label><input type="checkbox" name="puzzle1" value="puzzle1"> Puzzle 1 </label><br/>
+        <img src="/static/img/samplepuzzle2.jpg"><br/> 
+        <label><input type="checkbox" name="puzzle2" value="puzzle2"> Puzzle 2 </label><br/>
+        <img src="/static/img/samplepuzzle3.jpg"><br/> 
+        <label><input type="checkbox" name="puzzle3" value="puzzle3"> Puzzle 3 </label><br/>
+        <img src="/static/img/samplepuzzle4.jpg"><br/> 
+        <label><input type="checkbox" name="puzzle4" value="puzzle4"> Puzzle 4 </label><br/>
+        <br></br>
+        <label>Upload Script Text: <input type="file" name="fileInput" id="fileInput" accept=".txt"></label><br/>
+        <br></br>
+        <input type="submit" value="Build Escape Room">
+    </form>
+
+        <div id="output"></div>
+
+    <script>
+            
+    </script>
+
+</body>
+
+</html>
