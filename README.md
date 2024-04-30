@@ -1,4 +1,4 @@
-# Robot Escape Room v2 22-23
+# Robot Escape Room v3 23-24
 Team Members: Iain McEwen, Connor McKevitt, Kaelin Panneton
 
 ## Project Description 
@@ -6,7 +6,7 @@ This is the robot repository for the **2023/24 Robot Escape Room v3** Major Qual
 
 
 ## How to Run: Designer
-Simply run NOTEX FILE
+Run Final_Designer/web_stream.py
 
 ## How to Use: Adding a new room component to the Designer
 Technical knowledge of how the piece you plan to add works is required for step 5(ii). 
@@ -32,7 +32,7 @@ Technical knowledge of how the piece you plan to add works is required for step 
 1. Connect to the Wi-Fi named escaperoom 
 2. In Settings – Wi-Fi – change adapter options -> network connections - Wi-Fi - properties - ipv4 - Use following ipv4 address: 192.168.1.33 and set subnet mask to 255.255.255.0 
 3. Turn on the robot 
-4. Plug in pieces 
-5. Run the escape room web stream 
+4. Plug in pieces of the room
+5. Run Final_Robot_Website/web_stream.py
 6. Open a new command prompt in the file directory containing RobotControllerMQTT.py 
     1. Run command: python RobotControllerMQTT.py 
