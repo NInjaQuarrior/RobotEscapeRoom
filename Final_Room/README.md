@@ -2,6 +2,9 @@
 Team Members: Conner McKevitt, Kaelin Panneton, Iain McEwen
 
 ## File Descriptions
+Team Members: Conner McKevitt, Kaelin Panneton, Iain McEwen
+
+## File Descriptions
 
 ## Running the Room 
 
