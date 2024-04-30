@@ -9,19 +9,19 @@ This is the robot repository for the **2023/24 Robot Escape Room v3** Major Qual
 Simply run NOTEX FILE
 
 ## How to Use: Adding a new room component to the Designer
-Technical knowledge of how the piece you plan to add works is required for step 5(b). 
+Technical knowledge of how the piece you plan to add works is required for step 5(ii). 
 1. Keep in mind the following: does this go in place of a floor piece or a wall piece, and is it an input or output? 
 2. Get two PNGs, and ensure they are named the same as the piece you are adding  
     1. Get a picture of the piece as it will appear, either a picture or 3d render is recommended. This should be saved to "static/img/pieces". 
 	2. Get a symbol that visually represents the piece, it should be simple in detail and easily viewable when shrunk down. This should be saved to "static/img". 
 3. In roomLayout.js: 
     1. Add the name of the piece to the variable floorTypes or wallTypes as appropriate. 
-	2. Add the dimensions of the PNG from step 2(a) to the variable natImages in the following manner: "piece name": [width, height]. 
+	2. Add the dimensions of the PNG from step 2(i) to the variable natImages in the following manner: "piece name": [width, height]. 
 4. In htnp.js: 
     1. Add the name of the piece to the variable inputs or outputs as appropriate. 
 5. In finalProduct.js: 
-    1. Add the dimensions of the PNG from step 2(a) to the variable natImages as you did in step 3(b) 
-	2. Add the following information to the variable conversions in the form "CapitalizedPieceNameWithNoSpaces":{topic:"5(b)(i)", setup:"5(b)(ii)", initialState:"5(b)(iii)", activateMessage:"5(b)(iv)"}. Any unnecessary variables should be set to null. 
+    1. Add the dimensions of the PNG from step 2(i) to the variable natImages as you did in step 3(ii) 
+	2. Add the following information to the variable conversions in the form "CapitalizedPieceNameWithNoSpaces":{topic:"5(ii)(a)", setup:"5(ii)(b)", initialState:"5(ii)(c)", activateMessage:"5(ii)(d)"}. Any unnecessary variables should be set to null. 
 	    1. What topic the pi subscribes to when it starts. 
 		2. The value the pi takes in to be properly initialized. 
 		3. A command that tells the pi what physical state to start in. 
